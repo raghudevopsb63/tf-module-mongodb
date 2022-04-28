@@ -1,11 +1,12 @@
-//resource "aws_docdb_cluster" "docdb" {
-//  cluster_identifier = "roboshop-${var.ENV}"
-//  engine             = "docdb"
-//  master_username    = "admin1"
-//  master_password    = "roboshop1"
-//  ## This is just for lab purpose
-//  skip_final_snapshot = true
-//}
+resource "aws_docdb_cluster" "docdb" {
+  cluster_identifier = "roboshop-${var.ENV}"
+  engine             = "docdb"
+  master_username    = "admin1"
+  master_password    = "roboshop1"
+  ## This is just for lab purpose
+  skip_final_snapshot  = true
+  db_subnet_group_name = aws_docdb_subnet_group.docdb.name
+}
 
 resource "aws_docdb_subnet_group" "docdb" {
   name       = "roboshop-${var.ENV}"
