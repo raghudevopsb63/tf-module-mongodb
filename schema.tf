@@ -1,4 +1,5 @@
 resource "null_resource" "schema" {
+  depends_on = [aws_route53_record.record]
   provisioner "local-exec" {
     command = <<EOF
 cd /tmp
