@@ -54,5 +54,5 @@ resource "aws_security_group" "allow_mongodb" {
 
 resource "aws_secretsmanager_secret_version" "mongodb-url" {
   secret_id     = var.SECRET_ID
-  secret_string = jsonencode("{SAMPLE=${aws_docdb_cluster.docdb.endpoint}}")
+  secret_string = jsonencode({ "SAMPLE" = "${aws_docdb_cluster.docdb.endpoint}" })
 }
