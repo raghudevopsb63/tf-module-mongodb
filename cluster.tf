@@ -50,9 +50,3 @@ resource "aws_security_group" "allow_mongodb" {
     Name = "roboshop-mongodb-${var.ENV}"
   }
 }
-
-
-resource "aws_secretsmanager_secret_version" "mongodb-url" {
-  secret_id     = var.SECRET_ID
-  secret_string = jsonencode({ "MONGODB_ENDPOINT" = aws_docdb_cluster.docdb.endpoint })
-}
